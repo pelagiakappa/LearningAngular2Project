@@ -1,0 +1,67 @@
+<!--<p>-->
+<!--shopping-list works!-->
+<!--</p>-->
+
+<!--043 Using the Components-->
+<!--<div class="row">-->
+<!--<div class="col-xs-10">-->
+<!--<app-shopping-edit></app-shopping-edit>-->
+<!--<hr>-->
+<!--<p>The list</p>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--050 Working on the ShoppingListComponent-->
+<!--<div class="row">-->
+<!--<div class="col-xs-10">-->
+<!--<app-shopping-edit></app-shopping-edit>-->
+<!--<hr>-->
+<!--<ul class="list-group">-->
+<!--<a class="list-group-item" style="cursor: pointer"></a>-->
+<!--</ul>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--052 Creating and Outputting the Shopping List-->
+<!--<div class="row">-->
+<!--<div class="col-xs-10">-->
+<!--<app-shopping-edit></app-shopping-edit>-->
+<!--<hr>-->
+<!--<ul class="list-group">-->
+<!--<a class="list-group-item" style="cursor: pointer"-->
+<!--*ngFor="let ingredient of ingredients">-->
+<!--{{ingredient.name}} ({{ingredient.amount}})-->
+<!--</a>-->
+<!--</ul>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--080 Allowing the User to Add Ingredients to the Shopping List-->
+<!--<div class="row">-->
+<!--<div class="col-xs-10">-->
+<!--<app-shopping-edit-->
+<!--(ingredientAdded)="onIngredientAdded($event)">-->
+<!--</app-shopping-edit>-->
+<!--<hr>-->
+<!--<ul class="list-group">-->
+<!--<a class="list-group-item" style="cursor: pointer"-->
+<!--*ngFor="let ingredient of ingredients">-->
+<!--{{ingredient.name}} ({{ingredient.amount}})-->
+<!--</a>-->
+<!--</ul>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--107 Adding the Shopping List Service-->
+<div class="row">
+  <div class="col-xs-10">
+    <app-shopping-edit></app-shopping-edit>
+    <hr>
+    <ul class="list-group">
+      <a class="list-group-item" style="cursor: pointer"
+         *ngFor="let ingredient of ingredients">
+        {{ingredient.name}} ({{ingredient.amount}})
+      </a>
+    </ul>
+  </div>
+</div>
