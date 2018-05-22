@@ -14,6 +14,9 @@ export class RecipeItemComponent implements OnInit {
   // -->079 Passing Data with Event and Property Binding Combined<--
   // @Output() recipeSelected = new EventEmitter<void>();
 
+  // -->150 Passing Dynamic Parameters to Links<--
+  @Input() index: number;
+
   // -->106 Using a Service for Cross-Component Communication<--
   constructor(private recipeService: RecipeService) {
   }

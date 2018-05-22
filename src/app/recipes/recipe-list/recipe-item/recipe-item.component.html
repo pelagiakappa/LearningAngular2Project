@@ -15,8 +15,63 @@
 <!--</a>-->
 
 <!--079 Passing Data with Event and Property Binding Combined-->
-<a href="#" class="list-group-item clearfix"
-   (click)="onSelected()">
+<!--<a href="#" class="list-group-item clearfix"-->
+<!--(click)="onSelected()">-->
+<!--<div class="pull-left">-->
+<!--<h4 class="list-group-item-heading">{{recipe.name}}</h4>-->
+<!--<p class="list-group-item-text">{{recipe.description}}</p>-->
+<!--</div>-->
+<!--<span class="pull-right">-->
+<!--<img [src]="recipe.imagePath" alt="{{recipe.name}}"-->
+<!--class="img-responsive" style="max-height: 50px;">-->
+<!--</span>-->
+<!--</a>-->
+
+<!--146 Fixing Page Reload Issues-->
+<!--<a style="cursor: pointer;"-->
+<!--class="list-group-item clearfix" (click)="onSelected()">-->
+<!--<div class="pull-left">-->
+<!--<h4 class="list-group-item-heading">{{recipe.name}}</h4>-->
+<!--<p class="list-group-item-text">{{recipe.description}}</p>-->
+<!--</div>-->
+<!--<span class="pull-right">-->
+<!--<img [src]="recipe.imagePath" alt="{{recipe.name}}"-->
+<!--class="img-responsive" style="max-height: 50px;">-->
+<!--</span>-->
+<!--</a>-->
+
+<!--149 Configuring Route Parameters-->
+<!--<a style="cursor: pointer;"-->
+<!--class="list-group-item clearfix">-->
+<!--<div class="pull-left">-->
+<!--<h4 class="list-group-item-heading">{{recipe.name}}</h4>-->
+<!--<p class="list-group-item-text">{{recipe.description}}</p>-->
+<!--</div>-->
+<!--<span class="pull-right">-->
+<!--<img [src]="recipe.imagePath" alt="{{recipe.name}}"-->
+<!--class="img-responsive" style="max-height: 50px;">-->
+<!--</span>-->
+<!--</a>-->
+
+<!--150 Passing Dynamic Parameters to Links-->
+<!--<a style="cursor: pointer;"-->
+<!--class="list-group-item clearfix"-->
+<!--[routerLink]="[index]">-->
+<!--<div class="pull-left">-->
+<!--<h4 class="list-group-item-heading">{{recipe.name}}</h4>-->
+<!--<p class="list-group-item-text">{{recipe.description}}</p>-->
+<!--</div>-->
+<!--<span class="pull-right">-->
+<!--<img [src]="recipe.imagePath" alt="{{recipe.name}}"-->
+<!--class="img-responsive" style="max-height: 50px;">-->
+<!--</span>-->
+<!--</a>-->
+
+<!--151 Styling Active Recipe Items-->
+<a style="cursor: pointer;"
+   class="list-group-item clearfix"
+   [routerLink]="[index]"
+   routerLinkActive="active">
   <div class="pull-left">
     <h4 class="list-group-item-heading">{{recipe.name}}</h4>
     <p class="list-group-item-text">{{recipe.description}}</p>

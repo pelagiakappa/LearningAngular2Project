@@ -86,16 +86,50 @@
 <!--</div>-->
 
 <!--106 Using a Service for Cross-Component Communication-->
+<!--<div class="row">-->
+<!--<div class="col-xs-12">-->
+<!--<button class="btn btn-success">New Recipe</button>-->
+<!--</div>-->
+<!--</div>-->
+<!--<hr>-->
+<!--<div class="row">-->
+<!--<div class="col-xs-12">-->
+<!--<app-recipe-item *ngFor="let recipeEl of recipes"-->
+<!--[recipe]="recipeEl">-->
+<!--</app-recipe-item>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--150 Passing Dynamic Parameters to Links-->
+<!--<div class="row">-->
+<!--<div class="col-xs-12">-->
+<!--<button class="btn btn-success">New Recipe</button>-->
+<!--</div>-->
+<!--</div>-->
+<!--<hr>-->
+<!--<div class="row">-->
+<!--<div class="col-xs-12">-->
+<!--<app-recipe-item *ngFor="let recipeEl of recipes; let i = index"-->
+<!--[recipe]="recipeEl"-->
+<!--[index]="i">-->
+<!--</app-recipe-item>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--154 Programmatic Navigation to the Edit Page-->
 <div class="row">
   <div class="col-xs-12">
-    <button class="btn btn-success">New Recipe</button>
+    <button class="btn btn-success"
+            (click)="onNewRecipe()">New Recipe
+    </button>
   </div>
 </div>
 <hr>
 <div class="row">
   <div class="col-xs-12">
-    <app-recipe-item *ngFor="let recipeEl of recipes"
-                     [recipe]="recipeEl">
+    <app-recipe-item *ngFor="let recipeEl of recipes; let i = index"
+                     [recipe]="recipeEl"
+                     [index]="i">
     </app-recipe-item>
   </div>
 </div>

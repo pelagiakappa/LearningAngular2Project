@@ -1,4 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import {Recipe} from '../recipe.module';
 import {RecipeService} from '../recipe.service';
@@ -28,7 +29,10 @@ export class RecipeListComponent implements OnInit {
   recipes: Recipe[];
 
   // -->105 Managing Recipes in a Recipe Service<--
-  constructor(private recipeService: RecipeService) {
+  // -->154 Programmatic Navigation to the Edit Page<--
+  constructor(private recipeService: RecipeService,
+              private router: Router,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -39,6 +43,11 @@ export class RecipeListComponent implements OnInit {
   // -->079 Passing Data with Event and Property Binding Combined<--
   onRecipeSelected(recipe: Recipe) {
     this.recipeWasSelected.emit(recipe);
+  }
+
+  // -->154 Programmatic Navigation to the Edit Page<--
+  onNewRecipe() {
+    this.router.navigate(['new'], {relativeTo: this.route});
   }
 
 }

@@ -51,4 +51,9 @@ export class RecipeService {
     this.slService.addIngredients(ingredients);
   }
 
+  // -->149 Configuring Route Parameters<--
+  getRecipe(index: number) {
+    return this.recipes[index];
+  }
+
 }
