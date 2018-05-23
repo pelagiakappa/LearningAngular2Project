@@ -1,11 +1,15 @@
 // -->104 Setting up the Services<--
 import {EventEmitter} from '@angular/core';
+import {Subject} from 'rxjs/Subject';
 
 import {Ingredient} from '../shared/ingredient.module';
 
 export class ShoppingListService {
   // -->108 Using Services for Push Notifications<--
-  ingredientsChanged = new EventEmitter<Ingredient[]>();
+  // ingredientsChanged = new EventEmitter<Ingredient[]>();
+
+  // -->166 Improving the Reactive Service with Observables Subjects<--
+  ingredientsChanged = new Subject<Ingredient[]>();
 
   // -->107 Adding the Shopping List Service<--
   private ingredients: Ingredient[] = [
@@ -21,7 +25,10 @@ export class ShoppingListService {
     this.ingredients.push(ingredient);
 
     // -->108 Using Services for Push Notifications<--
-    this.ingredientsChanged.emit(this.ingredients.slice());
+    // this.ingredientsChanged.emit(this.ingredients.slice());
+
+    // ->166 Improving the Reactive Service with Observables Subjects<-
+    this.ingredientsChanged.next(this.ingredients.slice());
   }
 
   // -->110 Passing Ingredients from Recipes to the Shopping List via a Service<--
@@ -35,7 +42,10 @@ export class ShoppingListService {
     // basically turn an array of elements into a list of elements).
     // We spread our ingredients into a list of single ingredients.
     this.ingredients.push(...ingredients);
-    this.ingredientsChanged.emit(this.ingredients.slice());
+    // this.ingredientsChanged.emit(this.ingredients.slice());
+
+    // ->166 Improving the Reactive Service with Observables Subjects<-
+    this.ingredientsChanged.next(this.ingredients.slice());
   }
 
 }

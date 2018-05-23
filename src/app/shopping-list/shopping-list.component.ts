@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Subscription} from 'rxjs/Subscription';
 
 import {Ingredient} from '../shared/ingredient.module';
 import {ShoppingListService} from './shopping-list.service';
@@ -8,7 +9,7 @@ import {ShoppingListService} from './shopping-list.service';
   templateUrl: './shopping-list.component.html',
   styleUrls: ['./shopping-list.component.css']
 })
-export class ShoppingListComponent implements OnInit {
+export class ShoppingListComponent implements OnInit, OnDestroy {
   // -->050 Working on the ShoppingListComponent<--
   // ingredients = [];
   // -->052 Creating and Outputting the Shopping List<--
@@ -20,6 +21,9 @@ export class ShoppingListComponent implements OnInit {
   // -->107 Adding the Shopping List Service<--
   ingredients: Ingredient[];
 
+  // ->166 Improving the Reactive Service with Observables Subjects<-
+  private subscription: Subscription;
+
   // -->107 Adding the Shopping List Service<--
   constructor(private slService: ShoppingListService) {
   }
@@ -29,7 +33,8 @@ export class ShoppingListComponent implements OnInit {
     this.ingredients = this.slService.getIngredients();
 
     // -->108 Using Services for Push Notifications<--
-    this.slService.ingredientsChanged.subscribe(
+    // ->166 Improving the Reactive Service with Observables Subjects<-
+    this.subscription = this.slService.ingredientsChanged.subscribe(
       (ingredients: Ingredient[]) => {
         this.ingredients = ingredients;
       }
@@ -39,6 +44,13 @@ export class ShoppingListComponent implements OnInit {
   // ->080 Allowing the User to Add Ingredients to the Shopping List<-
   onIngredientAdded(ingredient: Ingredient) {
     this.ingredients.push(ingredient);
+  }
+
+  // ->166 Improving the Reactive Service with Observables Subjects<-
+  // We're using our own `Subject` here, so we have to unsubscribe
+  // whenever we don't need it anymore.
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }
