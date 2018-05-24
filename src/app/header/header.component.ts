@@ -1,4 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Response} from '@angular/http';
+
+import {DataStorageService} from '../shared/data-storage.service';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +12,8 @@ export class HeaderComponent implements OnInit {
   // -->077 Adding Navigation with Event Binding and ngIf<--
   @Output() featureSelected = new EventEmitter<string>();
 
-  constructor() {
+  // -->243 Sending PUT Requests to Save Data<--
+  constructor(private dataStorageService: DataStorageService) {
   }
 
   ngOnInit() {
@@ -18,6 +22,21 @@ export class HeaderComponent implements OnInit {
   // -->077 Adding Navigation with Event Binding and ngIf<--
   onSelect(feature: string) {
     this.featureSelected.emit(feature);
+  }
+
+  // -->243 Sending PUT Requests to Save Data<--
+  onSaveData() {
+    this.dataStorageService.storeRecipes()
+      .subscribe(
+        (response: Response) => {
+          console.log(response); // Response {_body: "[{"description":"A super-tasty Schnitzel - just aw…ount":1,"name":"Meat"}],…}
+        }
+      );
+  }
+
+  // -->244 GETting Back the Recipes<--
+  onFetchData() {
+    this.dataStorageService.getRecipes();
   }
 
 }
