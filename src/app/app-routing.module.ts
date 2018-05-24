@@ -7,6 +7,9 @@ import {ShoppingListComponent} from './shopping-list/shopping-list.component';
 import {RecipeStartComponent} from './recipes/recipe-start/recipe-start.component';
 import {RecipeDetailComponent} from './recipes/recipe-detail/recipe-detail.component';
 import {RecipeEditComponent} from './recipes/recipe-edit/recipe-edit.component';
+import {SignupComponent} from './auth/signup/signup.component';
+import {SigninComponent} from './auth/signin/signin.component';
+import {AuthGuard} from './auth/auth-guard.service';
 
 const appRoutes: Routes = [
   // By default, Angular matches paths by prefix. That means, that the
@@ -30,14 +33,26 @@ const appRoutes: Routes = [
     children: [
       {path: '', component: RecipeStartComponent},
       //  -->152 Adding Editing Routes<--
-      {path: 'new', component: RecipeEditComponent},
+      {
+        path: 'new', component: RecipeEditComponent,
+        // -->257 Route Protection and Redirection Example<--
+        canActivate: [AuthGuard]
+      },
       // -->148 Adding Child Routing Together<--
       {path: ':id', component: RecipeDetailComponent},
       //  -->152 Adding Editing Routes<--
-      {path: ':id/edit', component: RecipeEditComponent}
+      {
+        path: ':id/edit', component: RecipeEditComponent,
+        // -->257 Route Protection and Redirection Example<--
+        canActivate: [AuthGuard]
+      }
     ]
   },
-  {path: 'shopping-list', component: ShoppingListComponent}
+  {path: 'shopping-list', component: ShoppingListComponent},
+  // -->249 Creating a Signup Page and Route<--
+  {path: 'signup', component: SignupComponent},
+  // -->252 Signin Users In<--
+  {path: 'signin', component: SigninComponent}
 ];
 
 @NgModule({

@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Response} from '@angular/http';
 
 import {DataStorageService} from '../shared/data-storage.service';
+import {AuthService} from '../auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,9 @@ export class HeaderComponent implements OnInit {
   @Output() featureSelected = new EventEmitter<string>();
 
   // -->243 Sending PUT Requests to Save Data<--
-  constructor(private dataStorageService: DataStorageService) {
+  // -->255 Checking and Using Authentication Status<--
+  constructor(private dataStorageService: DataStorageService,
+              public authService: AuthService) {
   }
 
   ngOnInit() {
@@ -37,6 +40,11 @@ export class HeaderComponent implements OnInit {
   // -->244 GETting Back the Recipes<--
   onFetchData() {
     this.dataStorageService.getRecipes();
+  }
+
+  // -->256 Adding a Logout Button<--
+  onLogout() {
+    this.authService.logout();
   }
 
 }

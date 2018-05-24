@@ -226,6 +226,150 @@
 <!--</nav>-->
 
 <!--244 GETting Back the Recipes-->
+<!--<nav class="navbar navbar-default">-->
+<!--<div class="container-fluid">-->
+<!--<div class="navbar-header">-->
+<!--<a routerLink="/" class="navbar-brand">Recipe Book</a>-->
+<!--</div>-->
+<!--<div class="navbar-default">-->
+<!--<ul class="nav navbar-nav">-->
+<!--<li routerLinkActive="active">-->
+<!--<a routerLink="/recipes">Recipes</a>-->
+<!--</li>-->
+<!--<li routerLinkActive="active">-->
+<!--<a routerLink="/shopping-list">Shopping List</a>-->
+<!--</li>-->
+<!--</ul>-->
+<!--<ul class="nav navbar-nav navbar-right">-->
+<!--<li class="dropdown" appDropdown>-->
+<!--<a style="cursor: pointer;"-->
+<!--class="dropdown-toggle" role="button">Manage-->
+<!--<span class="caret"></span>-->
+<!--</a>-->
+<!--<ul class="dropdown-menu">-->
+<!--<li><a style="cursor: pointer;"-->
+<!--(click)="onSaveData()">Save Data</a>-->
+<!--</li>-->
+<!--<li><a style="cursor: pointer;"-->
+<!--(click)="onFetchData()">Fetch Data</a></li>-->
+<!--</ul>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--</div>-->
+<!--</nav>-->
+
+<!--249 Creating a Signup Page and Route-->
+<!--<nav class="navbar navbar-default">-->
+<!--<div class="container-fluid">-->
+<!--<div class="navbar-header">-->
+<!--<a routerLink="/" class="navbar-brand">Recipe Book</a>-->
+<!--</div>-->
+<!--<div class="navbar-default">-->
+<!--<ul class="nav navbar-nav">-->
+<!--<li routerLinkActive="active">-->
+<!--<a routerLink="/recipes">Recipes</a>-->
+<!--</li>-->
+<!--<li routerLinkActive="active">-->
+<!--<a routerLink="/shopping-list">Shopping List</a>-->
+<!--</li>-->
+<!--</ul>-->
+<!--<ul class="nav navbar-nav navbar-right">-->
+<!--<li><a routerLink="/signup">Register</a></li>-->
+<!--<li class="dropdown" appDropdown>-->
+<!--<a style="cursor: pointer;"-->
+<!--class="dropdown-toggle" role="button">Manage-->
+<!--<span class="caret"></span>-->
+<!--</a>-->
+<!--<ul class="dropdown-menu">-->
+<!--<li><a style="cursor: pointer;"-->
+<!--(click)="onSaveData()">Save Data</a>-->
+<!--</li>-->
+<!--<li><a style="cursor: pointer;"-->
+<!--(click)="onFetchData()">Fetch Data</a></li>-->
+<!--</ul>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--</div>-->
+<!--</nav>-->
+
+<!--252 Signin Users In-->
+<!--<nav class="navbar navbar-default">-->
+<!--<div class="container-fluid">-->
+<!--<div class="navbar-header">-->
+<!--<a routerLink="/" class="navbar-brand">Recipe Book</a>-->
+<!--</div>-->
+<!--<div class="navbar-default">-->
+<!--<ul class="nav navbar-nav">-->
+<!--<li routerLinkActive="active">-->
+<!--<a routerLink="/recipes">Recipes</a>-->
+<!--</li>-->
+<!--<li routerLinkActive="active">-->
+<!--<a routerLink="/shopping-list">Shopping List</a>-->
+<!--</li>-->
+<!--</ul>-->
+<!--<ul class="nav navbar-nav navbar-right">-->
+<!--<li><a routerLink="/signup">Register</a></li>-->
+<!--<li><a routerLink="/signin">Login</a></li>-->
+<!--<li class="dropdown" appDropdown>-->
+<!--<a style="cursor: pointer;"-->
+<!--class="dropdown-toggle" role="button">Manage-->
+<!--<span class="caret"></span>-->
+<!--</a>-->
+<!--<ul class="dropdown-menu">-->
+<!--<li><a style="cursor: pointer;"-->
+<!--(click)="onSaveData()">Save Data</a>-->
+<!--</li>-->
+<!--<li><a style="cursor: pointer;"-->
+<!--(click)="onFetchData()">Fetch Data</a></li>-->
+<!--</ul>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--</div>-->
+<!--</nav>-->
+
+<!--255 Checking and Using Authentication Status-->
+<!--<nav class="navbar navbar-default">-->
+<!--<div class="container-fluid">-->
+<!--<div class="navbar-header">-->
+<!--<a routerLink="/" class="navbar-brand">Recipe Book</a>-->
+<!--</div>-->
+<!--<div class="navbar-default">-->
+<!--<ul class="nav navbar-nav">-->
+<!--<li routerLinkActive="active">-->
+<!--<a routerLink="/recipes">Recipes</a>-->
+<!--</li>-->
+<!--<li routerLinkActive="active">-->
+<!--<a routerLink="/shopping-list">Shopping List</a>-->
+<!--</li>-->
+<!--</ul>-->
+<!--<ul class="nav navbar-nav navbar-right">-->
+<!--<ng-template [ngIf]="!authService.isAuthenticated()">-->
+<!--<li><a routerLink="/signup">Register</a></li>-->
+<!--<li><a routerLink="/signin">Login</a></li>-->
+<!--</ng-template>-->
+<!--<li class="dropdown" appDropdown-->
+<!--*ngIf="authService.isAuthenticated()">-->
+<!--<a style="cursor: pointer;"-->
+<!--class="dropdown-toggle" role="button">Manage-->
+<!--<span class="caret"></span>-->
+<!--</a>-->
+<!--<ul class="dropdown-menu">-->
+<!--<li><a style="cursor: pointer;"-->
+<!--(click)="onSaveData()">Save Data</a>-->
+<!--</li>-->
+<!--<li><a style="cursor: pointer;"-->
+<!--(click)="onFetchData()">Fetch Data</a></li>-->
+<!--</ul>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--</div>-->
+<!--</nav>-->
+
+<!--256 Adding a Logout Button-->
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -241,7 +385,15 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown" appDropdown>
+        <ng-template [ngIf]="!authService.isAuthenticated()">
+          <li><a routerLink="/signup">Register</a></li>
+          <li><a routerLink="/signin">Login</a></li>
+        </ng-template>
+
+        <li><a style="cursor: pointer;" (click)="onLogout()"
+               *ngIf="authService.isAuthenticated()">Logout</a></li>
+        <li class="dropdown" appDropdown
+            *ngIf="authService.isAuthenticated()">
           <a style="cursor: pointer;"
              class="dropdown-toggle" role="button">Manage
             <span class="caret"></span>
